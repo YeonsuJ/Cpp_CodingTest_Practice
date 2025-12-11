@@ -1,0 +1,8 @@
+<details>
+  <summary>More Information</summary>
+  <br /> <!-- 레이블과 본문 사이가 너무 좁은 것 같아서 줄바꿈 태그를 사용했다 -->
+
+  ```js
+  console.log('hello')
+  ```
+</details>
