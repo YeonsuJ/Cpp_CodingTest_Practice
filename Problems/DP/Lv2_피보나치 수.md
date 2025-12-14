@@ -46,6 +46,8 @@ int solution(int n) {
 
 ## 배운 점
 
+- 접근 : DP(동적계획법)
+
 - 재귀함수로 접근하면 Stack overflow 발생 (재귀함수가 메모리에 쌓이면서 메모리가 터짐)
 - 메모이제이션 사용해야함
 
@@ -54,3 +56,4 @@ int solution(int n) {
 
 
 - 시간복잡도 : O(N)
+
