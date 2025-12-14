@@ -34,7 +34,6 @@
 #include <vector>
 using namespace std;
 int solution(int n) {
-    int answer = 0;
     
     vector<int> f = {0,1};
     
@@ -52,5 +51,6 @@ int solution(int n) {
 
 - 마지막 return f[n]에 %1234567 했더니 overflow 발생
     ->  push_back에는 최종 나머지만 넣어야함
+
 
 - 시간복잡도 : O(N)
