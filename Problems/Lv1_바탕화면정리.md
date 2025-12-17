@@ -128,27 +128,34 @@ vector<int> solution(vector<string> wallpaper) {
 ```cpp
 #include <string>
 #include <vector>
-#include <algorithm>
+#include <algorithm> // min_element, max_element가 포함된 헤더
 
 using namespace std;
 
 vector<int> solution(vector<string> wallpaper) {
-    vector<int> answer;
-    int lux=51, luy=51;
-    int rdx=0, rdy=0;
+    vector<int> rows; // 파일이 있는 행(세로) 좌표들만 모음
+    vector<int> cols; // 파일이 있는 열(가로) 좌표들만 모음
     
+    // 1. 모든 칸을 돌며 파일('#')의 좌표를 수집
     for(int i=0; i<wallpaper.size(); i++){
         for(int j=0; j<wallpaper[i].size(); j++){
-            
             if(wallpaper[i][j] == '#'){
-                lux = min(lux,i);
-                luy = min(luy,j);
-                
-                rdx = max(rdx, i+1);
-                rdy = max(rdy, j+1);
+                rows.push_back(i);
+                cols.push_back(j);
             }
         }
     }
+    
+    // 2. 수집된 좌표들 중에서 최소/최대값 찾기
+    // min_element와 max_element는 '이터레이터(주소값)'를 반환하므로 
+    // 앞에 *(참조 연산자)를 붙여서 실제 값을 가져와야 함
+    
+    int lux = *min_element(rows.begin(), rows.end());
+    int luy = *min_element(cols.begin(), cols.end());
+    
+    // 끝점은 해당 칸의 우측 하단이므로 +1
+    int rdx = *max_element(rows.begin(), rows.end()) + 1; 
+    int rdy = *max_element(cols.begin(), cols.end()) + 1;
     
     return {lux, luy, rdx, rdy};
 }
